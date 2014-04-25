@@ -190,18 +190,12 @@ gulp.task('build', ['wipeDist'], function () {
 
 	/* Uglify our JS */
 	gulp.src('assets/js/*.js')
-		.pipe(uglify())
 		.pipe(gulp.dest('dist/assets/js/'));
 
 	/* UnCSS & Minify our CSS */
 	gulp.src([
 			'assets/css/combined.css'
 		])
-		.pipe(uncss({
-			html: [
-				'index.html'
-			]
-		}))
 		.pipe(csso())
 		.pipe(gulp.dest('dist/assets/css'));
 });

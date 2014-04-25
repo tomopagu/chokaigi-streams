@@ -6,3 +6,7 @@
 
 /src/vendor
 /index.html
+
+/.DS_Store
+
+/dist/
