@@ -1,8 +1,8 @@
 # Chokaigi Streams
 
-Loosely based off Grunt Base, gulp base uses the [gulp build system](http://gulpjs.com) rather than grunt.
+A site to easily display a list of all (as much as I know) streams from the annual ChoKaigi event. Quite a lot happening this year and I want to watch it all so I thought, "Hey let's make another one of those tracker thingys". So here we are.
 
-Quick Intro Slideshow to gulp: [http://slid.es/contra/gulp](http://slid.es/contra/gulp)
+Not really done yet though and there isn't a lot of time left...
 
 ## Workflow
 
