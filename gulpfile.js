@@ -15,6 +15,7 @@ var csso = require('gulp-csso');
 var uglify = require('gulp-uglify');
 var uncss = require('gulp-uncss');
 var browserSync = require('browser-sync');
+var browserSync = require('buildbranch');
 
 /* Clean our Files */
 gulp.task('wipeAssets', function () {
