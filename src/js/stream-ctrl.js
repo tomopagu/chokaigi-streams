@@ -1,11 +1,20 @@
-var chokaigi = angular.module("chokaigi", ["firebase"]);
+var chokaigi = angular.module("chokaigi", ['firebase','angularMoment']);
 
-function StreamCtrl ($scope, $firebase) {
-  var streams = new Firebase("https://chokaigi-streams.firebaseio.com");
+function StreamCtrl ($scope, $firebase, $timeout) {
+  var streams = new Firebase('https://chokaigi-streams.firebaseio.com');
   $scope.streams = $firebase(streams);
-
-  var keys = $scope.streams.$getIndex();
-  angular.forEach(keys, function(key, i) {
-    console.log($scope.streams[key]); // Prints items in order they appear in Firebase.
-  });
+  
+  $timeout(function(){
+    $scope.current = moment().local().format();
+    var keys = $scope.streams.$getIndex();
+    keys.forEach(function(key) {
+      $scope.streams[key].start = moment($scope.streams[key].start+' +0900').local().format();
+      
+      if($scope.streams[key].end)
+      {
+        $scope.streams[key].end = moment($scope.streams[key].end+' +0900').local().format();
+      }
+    });
+  },2000)
+  
 }

@@ -16,8 +16,12 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-xs-12">
-		      <h1>Chokaigi Streams - 2014</h1>
+        <div class="col-xs-6">
+		  <h1>Chokaigi Streams - 2014</h1>
+        </div>
+        <div class="col-xs-6 info">
+          <p><strong>Key:</strong> - Orange = Ended, - Green = Online, Yellow = Paid</p>
+          <p>Times are adjusted for your timezone</p>
         </div>
       </div>
 
@@ -27,14 +31,16 @@
             <thead>
               <tr>
                 <th>Stream</th>
-                <th>Time</th>
+                <th>Relative Time</th>
+                <th>Absolute Time</th>
                 <th>Link</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="stream in streams">
+              <tr ng-repeat="stream in streams | orderByPriority" ng-class="{paid: stream.paid,current:!stream.end && stream.start < current,over:stream.end}">
                 <td>{{ stream.name }}</td>
-                <td>{{ stream.time }}</td>
+                <td>{{ stream.start | amCalendar }}</td>
+                <td>{{ stream.start |  amDateFormat:'Do MMMM YYYY HH:mm' }}</td>
                 <td><a ng-href="{{ stream.link }}">{{ stream.link }}</a></td>
               </tr>
             </tbody>
