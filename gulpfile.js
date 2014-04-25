@@ -15,7 +15,6 @@ var csso = require('gulp-csso');
 var uglify = require('gulp-uglify');
 var uncss = require('gulp-uncss');
 var browserSync = require('browser-sync');
-var buildBranch = require('buildbranch');
 
 /* Clean our Files */
 gulp.task('wipeAssets', function () {
@@ -199,19 +198,4 @@ gulp.task('build', ['wipeDist'], function () {
 		])
 		.pipe(csso())
 		.pipe(gulp.dest('dist/assets/css'));
-});
-
-/* Pushes /dist to gh-pages */
-gulp.task('deploy', ['build'], function () {
-  buildBranch({
-      branch: 'gh-pages',
-      ignore: ['.git', 'dist', 'node_modules'],
-      folder: 'dist'
-    }, function(err) {
-      if(err) {
-        throw err;
-      }
-      console.log('Published!');
-    }
-  );
 });
