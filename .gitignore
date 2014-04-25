@@ -1,0 +1,8 @@
+/assets
+
+/node_modules
+
+/src/compiled/
+
+/src/vendor
+/index.html
