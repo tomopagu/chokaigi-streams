@@ -15,6 +15,7 @@ var csso = require('gulp-csso');
 var uglify = require('gulp-uglify');
 var uncss = require('gulp-uncss');
 var browserSync = require('browser-sync');
+var deploy = require("gulp-gh-pages");
 
 /* Clean our Files */
 gulp.task('wipeAssets', function () {
@@ -198,4 +199,9 @@ gulp.task('build', ['wipeDist'], function () {
 		])
 		.pipe(csso())
 		.pipe(gulp.dest('dist/assets/css'));
+});
+
+gulp.task('deploy', function () {
+    gulp.src("./dist/**/*")
+        .pipe(deploy(git@github.com:Tomo-san/chokaigi-streams.git));
 });
