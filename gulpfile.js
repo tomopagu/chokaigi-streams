@@ -203,5 +203,5 @@ gulp.task('build', ['wipeDist'], function () {
 
 gulp.task('deploy', function () {
     gulp.src("./dist/**/*")
-        .pipe(deploy(git@github.com:Tomo-san/chokaigi-streams.git));
+        .pipe(deploy('https://github.com/Tomo-san/chokaigi-streams.git'));
 });

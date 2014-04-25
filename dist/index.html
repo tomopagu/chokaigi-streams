@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="chokaigi">
+	<head>
+		<title>Chokaigi Streams</title>
+		<link href="assets/css/combined.css" rel="stylesheet" media="screen">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+		<!--[if lt IE 8]>
+		<link href="assets/css/bootstrap-ie7.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+	</head>
+	<body>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-xs-6">
+		  <h1>Chokaigi Streams - 2014</h1>
+        </div>
+        <div class="col-xs-6 info">
+          <p><strong>Key:</strong> - Orange = Ended, - Green = Online, Yellow = Paid</p>
+          <p>Times are adjusted for your timezone</p>
+        </div>
+      </div>
+
+      <div class="row" ng-controller="StreamCtrl">
+        <div class="col-xs-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Stream</th>
+                <th>Relative Time</th>
+                <th>Absolute Time</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="stream in streams | orderByPriority" ng-class="{paid: stream.paid,current:!stream.end && stream.start < current,over:stream.end}">
+                <td>{{ stream.name }}</td>
+                <td>{{ stream.start | amCalendar }}</td>
+                <td>{{ stream.start |  amDateFormat:'Do MMMM YYYY HH:mm' }}</td>
+                <td><a ng-href="{{ stream.link }}">{{ stream.link }}</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="assets/js/combined.js"></script>
+		<script src="assets/js/angular.js"></script>
+	</body>
+</html>
