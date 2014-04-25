@@ -1,0 +1,13 @@
+For the Chokaigi Web App, use Moment.js for the Japanese Times, convert to UTC with .UTC and then convert them using '.local()' into users time.
+
+eg.
+var time = moment.utc([jptime]); // Convert the JP time to UTC
+time.local(); // Convert the UTC time into the users timezone
+
+{
+  name: [stream name],
+  time: [jp time],
+  link: [link to page (Gate or Watch)]
+}
+
+you'll want to angular.forEach that in the controller and replace stream.time with the user's timezone, then you can filter into a nicer date when ngRepeat-ing
