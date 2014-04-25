@@ -202,7 +202,7 @@ gulp.task('build', ['wipeDist'], function () {
 });
 
 /* Pushes /dist to gh-pages */
-gulp.task('deploy', function () {
+gulp.task('deploy', ['build'], function () {
   buildBranch({
       branch: 'gh-pages',
       ignore: ['.git', 'dist', 'node_modules'],
