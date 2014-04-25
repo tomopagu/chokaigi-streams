@@ -199,3 +199,18 @@ gulp.task('build', ['wipeDist'], function () {
 		.pipe(csso())
 		.pipe(gulp.dest('dist/assets/css'));
 });
+
+/* Pushes /dist to gh-pages */
+gulp.task('deploy', function () {
+  buildBranch({
+      branch: 'gh-pages',
+      ignore: ['.git', 'dist', 'node_modules'],
+      folder: 'dist'
+    }, function(err) {
+      if(err) {
+        throw err;
+      }
+      console.log('Published!');
+    }
+  );
+});
