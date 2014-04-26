@@ -37,7 +37,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="stream in streams | orderByPriority" ng-class="{paid: stream.paid,current:!stream.end && stream.start < current,over:stream.end}">
+              <tr ng-repeat="stream in streams | orderByPriority" ng-class="{paid: stream.paid,current:stream.start <= current && current <= stream.end,over:current >= stream.end}">
                 <td>{{ stream.name }}</td>
                 <td>{{ stream.start | amCalendar }}</td>
                 <td>{{ stream.start |  amDateFormat:'Do MMMM YYYY HH:mm' }}</td>
