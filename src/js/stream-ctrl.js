@@ -14,6 +14,10 @@ function StreamCtrl ($scope, $firebase, $timeout) {
       {
         $scope.streams[key].end = moment($scope.streams[key].end+' +0900').local().format();
       }
+      else
+      {
+        $scope.streams[key].end = moment('2014/04/28 12:00 +0900').local().format();
+      }
     });
   },2000)
   
